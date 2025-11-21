@@ -1,0 +1,344 @@
+@font-face {
+  src: url("https://fonts.cdnfonts.com/css/pp-neue-montreal") format("woff2");
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 400;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --warm-off-black: #1a1917;
+  --warm-off-white: #f8f5f2;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "PP Neue Montreal", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--warm-off-black);
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--warm-off-white);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent
+    url("/images/transparent.png") repeat 0 0;
+  background-size: 300px 300px;
+  -webkit-animation: noise-animation 0.3s steps(5) infinite;
+          animation: noise-animation 0.3s steps(5) infinite;
+  opacity: 0.9;
+  will-change: transform;
+  z-index: 100;
+  pointer-events: none;
+}
+
+@-webkit-keyframes noise-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-2%, -3%);
+  }
+  20% {
+    transform: translate(-4%, 2%);
+  }
+  30% {
+    transform: translate(2%, -4%);
+  }
+  40% {
+    transform: translate(-2%, 5%);
+  }
+  50% {
+    transform: translate(-4%, 2%);
+  }
+  60% {
+    transform: translate(3%, 0);
+  }
+  70% {
+    transform: translate(0, 3%);
+  }
+  80% {
+    transform: translate(-3%, 0);
+  }
+  90% {
+    transform: translate(2%, 2%);
+  }
+  100% {
+    transform: translate(1%, 0);
+  }
+}
+
+@keyframes noise-animation {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-2%, -3%);
+  }
+  20% {
+    transform: translate(-4%, 2%);
+  }
+  30% {
+    transform: translate(2%, -4%);
+  }
+  40% {
+    transform: translate(-2%, 5%);
+  }
+  50% {
+    transform: translate(-4%, 2%);
+  }
+  60% {
+    transform: translate(3%, 0);
+  }
+  70% {
+    transform: translate(0, 3%);
+  }
+  80% {
+    transform: translate(-3%, 0);
+  }
+  90% {
+    transform: translate(2%, 2%);
+  }
+  100% {
+    transform: translate(1%, 0);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  position: relative;
+}
+
+#background-image-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+#background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transform: scale(1.2);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.projects-container {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.projects-container::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-container {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  max-width: 1400px; 
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.project-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.5fr 3fr 0.5fr; 
+  align-items: baseline;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(248, 245, 242, 0.2);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.project-item:hover {
+  border-bottom: 1px solid rgba(248, 245, 242, 0.8);
+}
+
+.project-item::before {
+  display: none; 
+}
+
+.project-id {
+  font-family: "PP Neue Montreal", sans-serif;
+  font-size: 1rem;
+  color: rgba(248, 245, 242, 0.5);
+  font-weight: 400;
+}
+
+.project-title {
+  font-size: 3.5rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--warm-off-white);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+
+.project-year {
+  font-size: 1rem;
+  text-align: right;
+  color: rgba(248, 245, 242, 0.5);
+  font-weight: 400;
+}
+
+.project-item:hover .project-title {
+  transform: translateX(30px);
+  color: #fff;
+}
+
+.project-item:hover .project-id,
+.project-item:hover .project-year {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .project-item {
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+  }
+  
+  .project-title {
+    font-size: 2rem;
+  }
+  
+  .project-year {
+    display: none;
+  }
+  
+  .project-id {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-title,
+  .project-year {
+    font-size: 1.4rem;
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--warm-off-black);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.loader-counter {
+  font-size: 10vw;
+  font-family: "PP Neue Montreal", sans-serif;
+  color: var(--warm-off-white);
+  font-weight: 400;
+}
+
+#enter-btn {
+  background: none;
+  border: none;
+  color: var(--warm-off-white);
+  font-family: "PP Neue Montreal", sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  padding: 20px;
+  transition: opacity 0.3s ease, letter-spacing 0.3s ease;
+  text-transform: uppercase;
+}
+
+#enter-btn:hover {
+  opacity: 0.7;
+  letter-spacing: 0.2em;
+}
+
+.loader-hidden {
+  transform: translateY(-100%);
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+body, a, button {
+  cursor: none !important; 
+}
+
+#cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--warm-off-white);
+  background-color: var(--warm-off-white);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background-color 0.3s;
+  mix-blend-mode: difference;
+}
+
+body.hovered #cursor {
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+  border: 1px solid var(--warm-off-white);
+  mix-blend-mode: normal;
+}
